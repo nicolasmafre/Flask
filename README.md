@@ -22,7 +22,6 @@ A estrutura básica do projeto é a seguinte:
 ```
 flaskproject/
 │
-├── app/
 ├── loja_roupa.py
 ├── moda_normalizado.db
 ├── moda_normalizado.py
@@ -32,9 +31,6 @@ flaskproject/
 |   └── contato.html
 |   └── index.html
 |   └── produtos.html
-├── static
+└── static
 |   └── style.css 
-├── __pycache__
-├── .idea
-└── .venv
 ```
