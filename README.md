@@ -33,6 +33,6 @@ flaskproject/
 |   └── produtos.html
 └── static
 |   └── style.css 
-└── static
+└── static/
     └── style.css
 ```
