@@ -1,33 +1,36 @@
-from flask import Flask, render_template # Chama o módulo flask e importa apenas as funções Flask e render_template.
-
+from flask import Flask, render_template
 import sqlite3
 
-app = Flask(__name__) # Instânciamento principal do Flask para criação de uma aplicação
+app = Flask(__name__)
 
-def pegar_tecidos():
+# Função para obter a lista de categorias do banco de dados
+def get_categorias():
     conn = sqlite3.connect('moda_normalizado.db')
     cursor = conn.cursor()
-    cursor.execute('SELECT * FROM Tecidos')
-    tecidos = cursor.fetchall()
+    cursor.execute('SELECT id, nome FROM Categoria')
+    categorias = cursor.fetchall()
     conn.close()
-    return tecidos
+    return [{"id": row[0], "nome": row[1]} for row in categorias]
 
-#@app.route('/')
-#def home():
-#    return render_template('index.html')
+# Função para obter produtos por categoria
+def get_produtos_por_categoria(categoria_id):
+    conn = sqlite3.connect('moda_normalizado.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM Produto WHERE categoria_id = ?', (categoria_id,))
+    produtos = cursor.fetchall()
+    conn.close()
+    return produtos
 
-@app.route('/') # Define uma rota para a URL raiz '/'
-def home(): # Define a função que será chamada quando a rota raiz for acessada.
-    tecidos = pegar_tecidos()
-    return render_template('index.html', tecidos=tecidos) # Retorna o conteúdo html
+@app.route('/')
+def index():
+    categorias = get_categorias()
+    return render_template('index.html', categorias=categorias)
 
-@app.route('/produtos') # Define uma rota para a URL raiz '/produtos
-def produtos(): # Define a função que será chamada quando a rota raiz for acessada.
-    return render_template('produtos.html') # Retorna o conteúdo html
+@app.route('/produtos_por_categoria/<int:categoria_id>')
+def produtos_por_categoria(categoria_id):
+    produtos = get_produtos_por_categoria(categoria_id)
+    return render_template('produtos.html', produtos=produtos)
 
-@app.route('/contato') # Define uma rota para a URL raiz '/contato'
-def contato(): # Define a função que será chamada quando a rota raiz for acessada.
-    return render_template('contato.html') # Retorna o conteúdo html
-
-if __name__ == 'main': # Verifica se o script está sendo executado diretamente.
+if __name__ == '__main__': # Verifica se o script está sendo executado diretamente.
     app.run(debug=True) # nicia o servidor de desenvolvimento Flask com o modo de depuração ativado.
+

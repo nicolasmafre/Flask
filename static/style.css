@@ -1,67 +1,74 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-h1{
-    font-family: "Sofia", Arial, sans-serif;
-    font-size: 4.5em;
-    text-align: center;
-}
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: block;
-    margin: 0 15px;
-}
-
-nav.menu {
-    border-top: 0.1em solid #2567ba;
-    border-bottom: 0.3em solid #2567ba;
-    border-right: 0.3em solid #2567ba;
-    width: 12em;
-}
-
-li.menu{
-    font-family: "Sofia", Arial, sans-serif;
-    font-weight: 400;
-    font-size: 1.6em;
+/* Criação de fontes */
+@font-face {
+    font-family: 'Gafata';
+    src: url('Fontes/Gafata-Regular.ttf') format('truetype');
+    font-weight: normal;
     font-style: normal;
-    color: #000010;
-    text-shadow: 0 1px 1px #000020;
-    list-style-type: none;
-    padding: 0;
-    gap: 10px; /* Espaço entre os itens da lista */
-    transition: 1s;
-}
-li.menu:hover{
-    transition: 1s;
-    text-shadow: 5px 5px 10px #2567ba;
 }
 
-.produtos {
-    display: flex;
-    justify-content: space-around;
-    margin: 20px 0;
+@font-face {
+    font-family: 'PlaywriteHU';
+    src: url('Fontes/PlaywriteHU-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
-.produto {
-    border: 1px solid #ccc;
-    padding: 10px;
-    width: 30%;
+/* Corpo do site */
+body {
+  background-color: #DCEE90;
+}
+
+/* Centralização de textos */
+.center {
     text-align: center;
+}
+
+/* Estilo relacionado ao menu de cabeçalho */
+.menu {
+    list-style-type: none; /* Remove os marcadores de lista */
+    padding: 0; /* Remove o padding padrão */
+    margin: 0; /* Remove o margin padrão */
+    display: inline; /* Faz os itens da lista ficarem na horizontal */
+    gap: 10px; /* Adiciona espaço entre os itens */
+}
+
+.menu ul {
+    border-bottom: 0.1em solid #CBDD7E; 
+    padding-top: 0.2em;
+    padding-bottom: 1em;
+}
+
+.menu li {
+    font-family: "Gafata", arial;
+    display: inline; /* Faz os itens da lista ficarem na horizontal */
+    margin-right: 10px; /* Adiciona espaço entre os itens */
+    font-size: 2em;
+    color: #0F1203;
+    transition: text-shadow 0.3s ease; /* Transição para a sombra */
+}
+.menu li:hover {
+    text-shadow: 0em 0.1em 0.2em #4D5C0A; /* Sombra ao passar o mouse */
+}
+
+nav {
+    position: static;
+}
+
+
+h1 {
+    font-family: 'PlaywriteHU', arial;
+    font-size: 5em;
 }
 
 footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #f8f8f8;
-    position: absolute;
-    width: 100%;
-    bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0px;
+  height: 50px; /* Ajuste a altura conforme necessário */
+  background-color: #f1f1f1; /* Cor de fundo do footer */
+  width: 100%;
+  position: fixed;
+  bottom: 0;
 }
+

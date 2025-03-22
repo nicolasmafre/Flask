@@ -3,25 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css?family=Sofia" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>{% block title %}Loja de Roupas{% endblock %}</title>
 </head>
 <body>
     <header>
-        <h1>Plus Clothes</h1>
+        <h1 class="center">Plus Clothes</h1>
         <nav class="menu">
-            <ul>
-                {% for tecido in tecidos %}
-                    <li class="menu">
-                        {{ tecido[1] }}
-                    </li>
-                {% endfor %}
-                <!-- <li><a href="/">Home</a></li>
-                <li><a href="/produtos">Produtos</a></li>-->
-                <li class="menu"><a href="/contato">Contato</a></li>
+            <ul class="center">
+                {% if categorias %}
+                    {% for categoria in categorias %}
+                        <li class="menu">
+                            {{ categoria[1] }}
+                        </li>
+                    {% endfor %}
+                {% endif %}
             </ul>
         </nav>
     </header>
