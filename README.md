@@ -27,12 +27,6 @@ flaskproject/
 ├── moda_normalizado.py
 ├── REDME.md
 ├── templates/
-|   └── base.html
-|   └── contato.html
-|   └── index.html
-|   └── produtos.html
-└── static
-|   └── style.css 
 └── static/
-    └── style.css
+    └── style.css 
 ```
